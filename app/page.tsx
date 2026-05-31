@@ -5,7 +5,7 @@ const SUPABASE_URL = "https://bsetsywfkvbzckcndseh.supabase.co";
 const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJzZXRzeXdma3ZiemNrY25kc2VoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwMzI0MTQsImV4cCI6MjA5NTYwODQxNH0.Et5hbS7b_xQ5_i2SVpnEvmdUGIg8KhTLNCJLDqFDwtg";
 
 const db = {
-  async insert(table, data) {
+  async insert(table: string, data: any) {
     try {
       const res = await fetch(`${SUPABASE_URL}/rest/v1/${table}`, {
         method: "POST",
@@ -17,7 +17,7 @@ const db = {
       return { ok: false, code: err.code, message: err.message };
     } catch (e) { return { ok: false, message: e.message }; }
   },
-  async select(table, params = "") {
+  async select(table: string, params: string = "") {
     try {
       const res = await fetch(`${SUPABASE_URL}/rest/v1/${table}?${params}`, {
         headers: { "apikey": SUPABASE_KEY, "Authorization": `Bearer ${SUPABASE_KEY}` }
