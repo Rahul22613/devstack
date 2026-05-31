@@ -460,4 +460,4 @@ export default function App() {
       {view === "directory" ? <DirectoryView onVisit={handleVisit} /> : <AnalyticsView liveClicks={liveClicks} />}
     </div>
   );
-}
+}// build fix
