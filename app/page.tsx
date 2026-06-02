@@ -377,7 +377,7 @@ export default function App() {
             <span style={{ fontWeight: 800, fontSize: 12, letterSpacing: "0.12em", color: "#fff" }}>DEVSTACK</span>
           </div>
           <div style={{ display: "flex", gap: 2 }}>
-            {[["directory", "DIRECTORY"], ["analytics", "ANALYTICS"]].map(([v, label]) => (
+            {[["directory", "DIRECTORY"], ].map(([v, label]) => (
               <button key={v} onClick={() => setView(v)} style={{ background: view === v ? "#16162a" : "transparent", color: view === v ? "#a78bfa" : "#555", border: "none", padding: "6px 12px", fontSize: 9, letterSpacing: "0.1em", cursor: "pointer", fontFamily: "inherit", fontWeight: view === v ? 700 : 400 }}>
                 {label}
               </button>
