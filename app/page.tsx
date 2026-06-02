@@ -318,7 +318,31 @@ function DirectoryView({ onVisit }) {
 
 // ── Analytics View ─────────────────────────────────────────────────────────────
 function AnalyticsView({ liveClicks }) {
+  const [authed, setAuthed] = useState(false);
+  const [pwInput, setPwInput] = useState("");
+  const [pwError, setPwError] = useState(false);
   const [clicks, setClicks] = useState([]);
+
+  const checkPassword = () => {
+    if (pwInput === "R@hul27patil") { setAuthed(true); setPwError(false); }
+    else { setPwError(true); setPwInput(""); }
+  };
+
+  if (!authed) return (
+    <div style={{ minHeight: "80vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
+      <div style={{ background: "#0d0d1a", border: "1px solid #16162a", padding: 40, width: 320, textAlign: "center" }}>
+        <div style={{ fontSize: 28, marginBottom: 16 }}>&#128274;</div>
+        <div style={{ fontSize: 10, letterSpacing: "0.2em", color: "#6d28d9", marginBottom: 8 }}>// ANALYTICS ACCESS</div>
+        <h2 style={{ margin: "0 0 20px", fontSize: 16, color: "#fff", fontWeight: 800 }}>Enter Password</h2>
+        <input type="password" placeholder="Password" value={pwInput}
+          onChange={e => setPwInput(e.target.value)}
+          onKeyDown={e => e.key === "Enter" && checkPassword()}
+          style={{ background: "#080810", border: "1px solid #16162a", color: "#c8c8d8", padding: "11px 14px", fontSize: 13, fontFamily: "inherit", outline: "none", width: "100%", boxSizing: "border-box", marginBottom: 10, textAlign: "center" }} />
+        {pwError && <div style={{ fontSize: 11, color: "#ef5350", marginBottom: 10 }}>Wrong password. Try again.</div>}
+        <button onClick={checkPassword} style={{ background: "#6d28d9", color: "#fff", border: "none", padding: "11px 20px", fontSize: 11, letterSpacing: "0.1em", cursor: "pointer", fontFamily: "inherit", fontWeight: 700, width: "100%" }}>UNLOCK</button>
+      </div>
+    </div>
+  );
   const [subs, setSubs] = useState(0);
   const [submissions, setSubmissions] = useState(0);
   const [loading, setLoading] = useState(true);
